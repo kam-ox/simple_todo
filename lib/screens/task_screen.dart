@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_provider_todo/widgets/todo_items.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TasksScreen extends StatelessWidget {
@@ -43,7 +44,12 @@ class TasksScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Text('Test'),
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                return TodoItem();
+              },
+              itemCount: 3,
+            ),
           ),
         ],
       ),
