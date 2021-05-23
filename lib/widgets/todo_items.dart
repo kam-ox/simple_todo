@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:circular_check_box/circular_check_box.dart';
+//import 'package:circular_check_box/circular_check_box.dart';
+import 'package:roundcheckbox/roundcheckbox.dart';
 
 class TodoItem extends StatefulWidget {
   @override
@@ -16,17 +17,23 @@ class _TodoItemState extends State<TodoItem> {
         style: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.w500,
+          decoration: selected ? TextDecoration.lineThrough : null,
         ),
       ),
-      leading: CircularCheckBox(
-        value: selected,
-        checkColor: Colors.black,
-        activeColor: Colors.yellow,
-        inactiveColor: Colors.grey,
-        disabledColor: Colors.yellow,
-        onChanged: (val) {
+      leading: RoundCheckBox(
+        animationDuration: Duration(
+          milliseconds: 500,
+        ),
+        size: 26,
+        checkedColor: Colors.yellow,
+        checkedWidget: Icon(
+          Icons.check_rounded,
+          color: Colors.black,
+          size: 20,
+        ),
+        onTap: (selected) {
           setState(() {
-            this.selected = !this.selected; //! genious
+            this.selected = !this.selected;
           });
         },
       ),
